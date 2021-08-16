@@ -1,0 +1,42 @@
+{% extends 'main_blog/base.html' %}
+
+
+{% block content %}
+    {% for post in category_url_articles %}
+        <div class="post">
+            <div class="post_in">
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+                {% if user.is_authenticated %}
+                    <h2><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}　editor</a></h2>  <!--ここでpkを習得させて番号をつける。そして、urlのpost_detailにpathを繋いで表示させる-->
+                {% endif %}
+                <h2><a href="{% url 'post_article' slug=post.slug %}">{{ post.title }}</a></h2>    <!--ここに新しく書いた記事のurlを張れるようにする-->
+
+                <p>{{ post.text|linebreaksbr }}</p>
+                <a href="{% url 'post_detail' slug=post.slug %}">Comments: {{ post.comments.count }}</a><br><br>
+
+            </div>
+        </div>
+        <br><br>
+    {% endfor %}
+
+
+    <!-- コンテンツの表示（通常のモデルオブジェクトとして扱える） -->
+    <div class="pager">
+        <!-- 前のページへのリンク -->
+        {% if articles.has_previous %}
+            <a href="?p={{ articles.previous_page_number }}">前へ</a>
+        {% endif %}
+
+        <!-- 現在のページ番号と全体のページ数 -->
+        <span>
+            {{ articles.number }} / {{ articles.paginator.num_pages }}
+        </span>
+
+        <!-- 次のページへのリンク -->
+        {% if articles.has_next %}
+            <a href="?p={{ articles.next_page_number }}">次へ</a>
+        {% endif %}
+    </div>
+{% endblock %}

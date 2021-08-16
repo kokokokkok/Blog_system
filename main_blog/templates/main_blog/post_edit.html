@@ -1,0 +1,14 @@
+{% extends 'main_blog/base.html' %}
+
+
+{% block content %}
+    <h2>New Post</h2>
+    <form method="Post" class="post-form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
+
+#{% csrf_token %}はフォームをセキュアにするためこれは非常に重要です！ これを忘れると、Djangoはフォームを保存しようとすると文句を言うでしょう
+#{{form.as_p}}はフォームを表示するためのもので”formの内容をpタグで囲って表示”という意味

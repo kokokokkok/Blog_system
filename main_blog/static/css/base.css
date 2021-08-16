@@ -1,0 +1,87 @@
+li{
+    list-style:none;
+}
+
+#back{
+    background:#FCFCF1;
+}
+
+
+
+
+#header{
+    background-color:#C7B374;
+}
+
+#header h1{
+    font-size:60px;
+    margin:0 70px 0 70px;
+    padding:20px 0 0 0;
+}
+
+
+.list{
+    text-align:center;
+     background-color:#404040;
+
+}
+
+.list li{
+    display:inline;
+    font-size:220%;
+    margin:20px;
+
+}
+
+.list li a{
+    color:white;
+    width:30%;
+}
+
+
+
+
+
+
+
+.body{
+    margin:0 70px 0 70px;
+    font-family:Franklin Gothic Medium;
+}
+
+#article{
+
+    word-wrap:break-word;
+}
+
+.post{
+    background-color:#E1E0D2;
+}
+
+.post_in{
+    margin:0 70px 0 70px;
+}
+
+
+.body #profile{
+    background-color:#505050;
+    text-align:center;
+    margin:15px;
+    border:solid;
+    border-radius:10px;
+}
+
+#profile{
+}
+
+
+#footer{
+    background-color:#e8e8e8;
+    margin:0 70px 0 70px;
+}
+
+
+.comment {
+    font-size:16px;
+    margin: 20px 0px 20px 20px;
+}

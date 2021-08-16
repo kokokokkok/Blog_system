@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+    <div id="back">
+        <head>
+            <title>Title</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+            <meta charset="utf-8">
+        </head>
+
+
+        <body>
+            <div id="header">
+
+                <h1 id="Blog_Name"><a href="/">My Blog Title</a></h1><br><br>
+
+
+                <ul class="list">
+                    {% for category in request.cate %}<!--　ベースのhtmlでmodelのデータを表示させたかったらmiddleware.pyによるフックが必要　！　-->
+                        <li><a href="{% url 'category' slug=category.category_url %}">{{ category.category_name }}</a></li> <!--url.pyからカテゴリのurlに渡す。　　ここからjavascriptでさらに細かくカテゴリー化-->
+                    {% endfor %}
+                </ul>
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="body">
+                <div class="row">
+                    <div class="col-md-8" id="article">
+                    {% block content %}
+                    {% endblock %}
+                    </div>
+
+                    <div class="col-md-4">
+                        <div id="profile" >
+                            <img src="">
+                            <h3>my name</h3>
+                            <p>自己紹介文</p>
+
+                            <ul id="business">　
+                                <li><a href="#">人生相談</a></li>
+                                <li><a href="{% url 'contact' %}">お問い合わせはこちらから</a></li>
+                            </ul>
+
+
+                            <ul id="connect_tool">　
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">インスタグラム</a></li>
+                                <li><a href="#">フェイスブック</a></li>
+                                <li><a href="#">note</a></li>
+                                <li><a href="#">お問い合わせはこちらから</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="footer">
+
+
+                    <ul id="related"> <!--ここに見せたいタイトル、urlを張る-->
+                        <li><img src=""><a href="#">関連タイトル</a></li>
+                        <li><img src=""><a href="#">関連タイトル</a></li>
+                        <li><img src=""><a href="#">関連タイトル</a></li>
+                    </ul>
+            </div>
+        </body>
+    </div>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'main_blog/base.html' %}
+
+{% block content %}
+    <p>pv数　{{ post.views }}</p>
+    {{ post.text_article| safe }}<!--ここにadminで入力したｈｔｍｌのテキストを入れ込みたい-->
+    <hr>
+
+
+
+
+    <a class="btn btn-default" href="{% url 'add_comment_to_post' slug=post.slug %}">Add comment</a>
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date">
+                {{ comment.created_date }}
+            </div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p>No comments here yet :(</p>
+    {% endfor %}
+
+
+
+
+    {% for post in relate_url %}
+        <ul>
+            <li><a href="{% url 'post_article' slug=post.slug %}">{{ post.title }}</a></li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}
+
